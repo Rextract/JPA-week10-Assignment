@@ -1,4 +1,4 @@
-package org.example.JPAweek10Assignment.model;
+package org.example.JPAweek10Assignment.model.entity;
 
 
 import lombok.*;

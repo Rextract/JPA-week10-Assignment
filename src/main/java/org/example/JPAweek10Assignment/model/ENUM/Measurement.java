@@ -13,14 +13,32 @@ public enum Measurement {
     CL("Centilitre"),
     DL("Decilitre");
 
+
+
    public final String label;
+
+
 
    private Measurement (String label) {
        this.label = label;
    }
 
-   public static Measurement valueOfLAbel(String label) {
-       
+   public static Measurement valueOfLabel(String label) {
+       for (Measurement m : values()) {
+           if (m.label.equals(label)) {
+               return m;
+           }
+       }
+       return null;
    }
+
+   private static final Map<String, Measurement> BY_LABEL = new HashMap<>();
+
+   static {
+       for (Measurement m : values()) {
+           BY_LABEL.put(m.label, m);
+       }
+   }
+
 
 }
