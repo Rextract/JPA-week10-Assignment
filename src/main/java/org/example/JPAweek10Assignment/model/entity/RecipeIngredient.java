@@ -4,9 +4,7 @@ import lombok.*;
 import org.example.JPAweek10Assignment.model.ENUM.Measurement;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Getter
@@ -23,6 +21,11 @@ public class RecipeIngredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeIngredientId;
+
+    @ManyToOne(
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
+            fetch = FetchType.LAZY
+    )
     private Ingredient ingredient;
     private double amount;
     private Measurement measurement;
