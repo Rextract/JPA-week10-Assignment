@@ -26,6 +26,7 @@ public class RecipeIngredient {
             cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
+    @JoinColumn(name = "")
     private Ingredient ingredient;
     private double amount;
     private Measurement measurement;
