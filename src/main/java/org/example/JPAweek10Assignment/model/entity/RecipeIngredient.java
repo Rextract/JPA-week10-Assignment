@@ -1,5 +1,6 @@
 package org.example.JPAweek10Assignment.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.example.JPAweek10Assignment.model.ENUM.Measurement;
@@ -20,21 +21,17 @@ public class RecipeIngredient {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false)
     private String recipeIngredientId;
-
-   @OneToMany(
-           mappedBy = "recipeIngredient",
-           cascade = {CascadeType.MERGE, CascadeType.REFRESH},
-           orphanRemoval = true
-   )
+    @ManyToOne(
+            fetch = FetchType.LAZY, optional = false,
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH}
+    )
+    @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
-
     private double amount;
     private Measurement measurement;
 
-
+    @ManyToOne
     private Recipe recipe;
 
 }
