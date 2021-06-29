@@ -21,7 +21,8 @@ public class Ingredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(updatable = false)
-    @JoinTable(name = "recipe_ingredient")
+    @ManyToOne
+    @JoinColumn(name = "ingredient_id", nullable = false)
     private int ingredientId;
 
     @Column(unique = true)

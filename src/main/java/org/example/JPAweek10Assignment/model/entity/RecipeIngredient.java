@@ -15,8 +15,6 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "recipe_ingredient")
-@Slf4j
 public class RecipeIngredient {
 
 
@@ -26,20 +24,17 @@ public class RecipeIngredient {
     @Column(updatable = false)
     private String recipeIngredientId;
 
-    @OneToOne(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY
-    )
-    @JoinColumn(name = "ingredient")
+   @OneToMany(
+           mappedBy = "recipeIngredient",
+           cascade = {CascadeType.MERGE, CascadeType.REFRESH},
+           orphanRemoval = true
+   )
     private Ingredient ingredient;
 
     private double amount;
     private Measurement measurement;
-    @ManyToOne(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY
-    )
-    @JoinTable(name = "recipe")
+
+
     private Recipe recipe;
 
 }
