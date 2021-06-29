@@ -14,6 +14,7 @@ import java.util.List;
 @Entity
 public class Recipe {
 
+
     private int recipeId;
     private String recipeName;
     private List<RecipeIngredient> recipeIngredients;

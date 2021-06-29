@@ -4,10 +4,7 @@ package org.example.JPAweek10Assignment.model.entity;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,6 +13,7 @@ import javax.persistence.Id;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Table(name = "ingredient")
 public class Ingredient {
 
 
@@ -23,7 +21,9 @@ public class Ingredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(updatable = false)
+    @JoinTable(name = "recipe_ingredient")
     private int ingredientId;
+
     @Column(unique = true)
     private String ingredientName;
 
