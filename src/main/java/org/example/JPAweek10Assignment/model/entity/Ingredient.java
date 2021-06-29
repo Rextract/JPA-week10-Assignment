@@ -17,20 +17,10 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany(mappedBy = "ingredient",
-               fetch = FetchType.LAZY)
     private int ingredientId;
     private String ingredientName;
 
 
-    public void ingredients (Ingredient ingredient) {
-        ingredientName.add(ingredient);
-        ingredient.setIngredientId(this);
-    }
 
-    public void ingredientsBack ( Ingredient ingredient) {
-        ingredient.setIngredientName(null);
-        ingredientName.remove(ingredient);
-    }
 
 }

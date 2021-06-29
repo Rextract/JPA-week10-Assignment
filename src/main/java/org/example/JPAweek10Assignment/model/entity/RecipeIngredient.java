@@ -31,7 +31,11 @@ public class RecipeIngredient {
     private double amount;
     private Measurement measurement;
 
-    @ManyToOne
+    @ManyToOne(
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
 }
