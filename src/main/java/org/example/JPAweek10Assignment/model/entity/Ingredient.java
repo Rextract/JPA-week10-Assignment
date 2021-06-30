@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
