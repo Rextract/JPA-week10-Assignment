@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
+/*
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,3 +26,5 @@ public class RecipeRecipeCategory {
     private int recipeCategoryId;
 
 }
+
+ */

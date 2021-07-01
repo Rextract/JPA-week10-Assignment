@@ -16,6 +16,7 @@ public class RecipeCategory {
 
     @Id
     private int categoryId;
+    @Column(updatable = false)
     private String category;
 
     @OneToMany(
@@ -23,7 +24,7 @@ public class RecipeCategory {
             cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     private List<Recipe> recipes;
-
+    
 
 
     public void addRecipe(Recipe recipe) {
