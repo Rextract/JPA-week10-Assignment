@@ -15,7 +15,6 @@ import java.util.List;
 public class RecipeCategory {
 
     @Id
-
     private int categoryId;
     private String category;
 

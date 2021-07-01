@@ -87,7 +87,7 @@ public class Recipe {
 
     }
 
-   /* public void addRecipeInstructions (RecipeInstruction instruction) {
+  /* public void addRecipeInstructions (RecipeInstruction instruction) {
         if (instruction == null) throw new IllegalArgumentException("RecipeInstruction instruction was null");
         if (recipeIngredients == null) recipeIngredients = new ArrayList<>();
         if (!recipeIngredients.contains(instruction)){
@@ -96,6 +96,4 @@ public class Recipe {
         }
     }
     */
-
-
 }
