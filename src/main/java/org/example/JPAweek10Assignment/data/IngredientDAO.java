@@ -11,10 +11,19 @@ import java.util.List;
 public interface IngredientDAO extends JpaRepository<Ingredient, String> {
 
     List<Ingredient> findByNameIgnoreCase(String ingredientName);
-    @Query("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
+    @Query
+            ("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
     List<Ingredient> findByNameIgnoreCaseJPQL(
-            @Param("ingredientName") String ingredientName);
+            @Param
+                    ("ingredientName") Integer ingredientName);
+
+
+    List<Ingredient> findAllByIngredientName (String ingredientName);
+    @Query
+            ("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
+    List<Ingredient> findAllByIngredientNameJPQL(
+    @Param
+            ("ingredientName") Integer ingredientName);
+
     }
 
-
-}
