@@ -20,9 +20,10 @@ public class RecipeCategory {
 
     @OneToMany(
             mappedBy = "recipes_id",
-            cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE},
+            cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     private List<Recipe> recipes;
+
 
 
     public void addRecipe(Recipe recipe) {

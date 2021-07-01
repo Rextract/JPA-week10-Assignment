@@ -35,16 +35,18 @@ public class Recipe {
     @JoinColumn(name = "recipe_ingredients_id")
     private List<RecipeIngredient> recipeIngredients;
 
-    @ManyToOne(
+    @OneToOne(
             cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     @JoinColumn(name = "recipe_instruction_id")
     private RecipeInstruction instruction;
 
-    @ManyToMany(
+    @OneToMany(
             cascade = {CascadeType.ALL},
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            mappedBy = "recipe",
+            orphanRemoval = true
     )
     @JoinColumn(name = "recipe_category_id")
     private List<RecipeCategory> categories;
