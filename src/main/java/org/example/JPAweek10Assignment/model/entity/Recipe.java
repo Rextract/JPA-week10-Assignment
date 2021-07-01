@@ -14,8 +14,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"instruction"})
+@EqualsAndHashCode(exclude = {"recipeId", "instruction"})
 @Entity
 @Slf4j
 public class Recipe {
@@ -32,11 +32,11 @@ public class Recipe {
             mappedBy = "recipe",
             orphanRemoval = true
     )
-    @JoinColumn(name = "recipe_ingredient_id")
+    @JoinColumn(name = "recipe_ingredients_id")
     private List<RecipeIngredient> recipeIngredients;
 
     @ManyToOne(
-            cascade = {CascadeType.ALL},
+            cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     @JoinColumn(name = "recipe_instruction_id")

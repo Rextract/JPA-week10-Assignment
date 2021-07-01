@@ -9,8 +9,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"categoryId", "recipes", "category"})
+@EqualsAndHashCode(exclude = {"categoryId", "category"})
 @Entity
 public class RecipeCategory {
 
@@ -18,7 +18,7 @@ public class RecipeCategory {
     private int categoryId;
     private String category;
 
-    @ManyToMany(
+    @OneToMany(
             mappedBy = "recipes_id",
             cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE},
             fetch = FetchType.LAZY)

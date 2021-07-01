@@ -13,8 +13,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"measurement", "amount"})
+@EqualsAndHashCode(exclude = {"recipeIngredientId", "ingredient", "recipe"})
 @Entity
 public class RecipeIngredient {
 
@@ -23,9 +23,10 @@ public class RecipeIngredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeIngredientId;
-    @ManyToOne(
+
+    @OneToOne(
             fetch = FetchType.LAZY, optional = false,
-            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH}
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST}
     )
     @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
@@ -33,7 +34,7 @@ public class RecipeIngredient {
     private Measurement measurement;
 
     @ManyToOne(
-            cascade = {CascadeType.ALL},
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     @JoinColumn(name = "recipe_id", nullable = false)
