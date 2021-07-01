@@ -30,6 +30,6 @@ public interface RecipeDAO extends JpaRepository<RecipeIngredient, String> {
     @Query("SELECT b FROM RecipeCategory b WHERE UPPER(b.category) = upper(:recipeCategory)")
     List<Recipe> findAllByRecipeMatchesCategoryJPQL(
             @Param("recipeCategory") String recipeCategory);
-    
+
 
 }
