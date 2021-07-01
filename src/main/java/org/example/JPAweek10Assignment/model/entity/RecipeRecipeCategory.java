@@ -23,6 +23,7 @@ public class RecipeRecipeCategory {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private int recipeId;
+
     private int recipeCategoryId;
 
 }
