@@ -19,10 +19,15 @@ public class RecipeCategory {
     @Column(updatable = false)
     private String category;
 
-    @OneToMany(
-            mappedBy = "recipes_id",
-            cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST},
-            fetch = FetchType.LAZY)
+    @ManyToMany(
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    @JoinTable(
+            name = "recipe_recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_category"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
     private List<Recipe> recipes;
 
 
