@@ -45,9 +45,8 @@ public class Recipe {
     @ManyToMany(
             cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE},
             fetch = FetchType.LAZY,
-            mappedBy = "recipe"
+            mappedBy = "recipes"
     )
-    @JoinColumn(name = "recipe_category_id")
     private List<RecipeCategory> categories;
 
 
