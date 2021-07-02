@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
 
@@ -14,4 +15,5 @@ public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
     List<Ingredient> findByIngredientNameJPQL(
             @Param("ingredientName") String ingredientName);
 
+    Optional<Ingredient> findAllByIngredientName(String ingredientName);
 }
