@@ -15,26 +15,26 @@ public interface RecipeDAO extends JpaRepository<Recipe, Integer> {
 
     @Query("SELECT b FROM Recipe b WHERE UPPER(b.recipeName) = UPPER(:recipe)")
     List<Recipe> findByRecipeNameIgnoreCase(String recipeName);
-    List<Recipe> findAllByRecipeIdJPQL(
-            @Param("recipe") String recipe);
+ //   List<Recipe> findAllByRecipeIdJPQL(
+  //          @Param("recipe") String recipe);
 
 
     @Query("SELECT b FROM Recipe b WHERE UPPER(b.recipeIngredients) = UPPER(:recipe)")
    Optional<Recipe> findAllRecipesContainingIngredientName(Ingredient ingredientName, RecipeIngredient recipeIngredient);
-   Optional<Recipe> findByRecipeNameIsContainingAndRecipeIngredientsJPQL(
-           @Param("recipe") String recipe);
+ //  Optional<Recipe> findByRecipeNameIsContainingAndRecipeIngredientsJPQL(
+   //        @Param("recipe") String recipe);
 
 
     @Query("SELECT b FROM Recipe b WHERE UPPER(b.categories) = UPPER(:recipe)")
    List<Recipe> findRecipeByCategories (Recipe recipe, String recipeCategory);
-   Optional<Recipe>  findRecipeByCategoriesJPQL(
-           @Param("recipe") String recipe);
+//   Optional<Recipe>  findRecipeByCategoriesJPQL(
+ //          @Param("recipe") String recipe);
 
 
 
     @Query("SELECT b FROM Recipe b WHERE UPPER(b.categories) = UPPER(:recipe)")
    List<Recipe> findAllRecipeContainsRecipeCategories(Recipe recipe, RecipeCategory recipeCategory);
-    Optional<Recipe> findAllRecipeContainsRecipeCategoriesJPQL(
-            @Param("recipe") String recipe);
+ //   Optional<Recipe> findAllRecipeContainsRecipeCategoriesJPQL(
+ //           @Param("recipe") String recipe);
 
 }
