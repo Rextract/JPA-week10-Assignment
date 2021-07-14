@@ -10,10 +10,17 @@ import java.util.Optional;
 
 public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
 
-    List<Ingredient> findDistinctByIngredientName(String ingredientName);
+
     @Query("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
-    List<Ingredient> findByIngredientNameJPQL(
+    List<Ingredient> findIngredientByIngredientName(String ingredientName);
+    Optional<Ingredient> findIngredientByIngredientNameJPQL (
             @Param("ingredientName") String ingredientName);
 
-    Optional<Ingredient> findAllByIngredientName(String ingredientName);
+
+    @Query("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
+    List<Ingredient> findIngredientByIngredientNameContaining(String ingredientName);
+    Optional<Ingredient>findIngredientByIngredientNameContainingJPQL(
+            @Param("ingredientName") String ingredientName);
+    
+
 }
