@@ -21,6 +21,5 @@ public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
     List<Ingredient> findIngredientByIngredientNameContaining(String ingredientName);
     Optional<Ingredient>findIngredientByIngredientNameContainingJPQL(
             @Param("ingredientName") String ingredientName);
-    
 
 }
