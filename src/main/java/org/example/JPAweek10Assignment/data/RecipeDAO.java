@@ -13,28 +13,20 @@ import java.util.Optional;
 
 public interface RecipeDAO extends JpaRepository<Recipe, Integer> {
 
-    @Query("SELECT b FROM Recipe b WHERE UPPER(b.recipeName) = UPPER(:recipe)")
-    List<Recipe> findByRecipeNameIgnoreCase(String recipeName);
-    List<Recipe> findAllByRecipeIdIgnoreCase(
-            @Param("recipe") int recipe);
+
+    List<Recipe> findByRecipeNameIsContaining(String recipeName);
+
+    List<Recipe> findRecipeByRecipeIngredientsIngredientIngredientName(String ingredientName);
+
+    List<Recipe> findRecipeByCategories(String category);
+
+    List<Recipe> findRecipesByCategoriesContainingOrderByCategories(String category);
 
 
-    @Query("SELECT b FROM Recipe b WHERE UPPER(b.recipeIngredients) = UPPER(:recipe)")
-   Optional<Recipe> findAllRecipesContainingIngredientName(Ingredient ingredientName, RecipeIngredient recipeIngredient);
-   Optional<RecipeIngredient> RecipeIngredient(
-           @Param("recipe") String recipe);
+ //  List<Recipe> findRecipeByCategories (Recipe recipe, String recipeCategory);
+
+//   List<Recipe> findAllRecipeContainsRecipeCategories(Recipe recipe, RecipeCategory recipeCategory);
 
 
-    @Query("SELECT b FROM Recipe b WHERE UPPER(b.categories) = UPPER(:recipe)")
-   List<Recipe> findRecipeByCategories (Recipe recipe, String recipeCategory);
-   Optional<RecipeCategory>  RecipeCategory(
-           @Param("recipe") String recipe);
-
-
-
-    @Query("SELECT b FROM Recipe b WHERE UPPER(b.categories) = UPPER(:recipe)")
-   List<Recipe> findAllRecipeContainsRecipeCategories(Recipe recipe, RecipeCategory recipeCategory);
-    Optional<Recipe> findAllRecipeContainsRecipeCategoriesIgnoreCase(
-            @Param("recipe") String recipe);
 
 }

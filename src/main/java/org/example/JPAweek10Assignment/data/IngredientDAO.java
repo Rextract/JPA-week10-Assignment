@@ -13,15 +13,10 @@ import java.util.Optional;
 public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
 
 
-    @Query("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
-    List<Ingredient> findIngredientByIngredientName(String ingredientName);
-    Optional<Ingredient> findIngredientByIngredientNameIgnoreCase (
-            @Param("ingredientName") String ingredientName);
 
+    List<Ingredient> findByIngredientName(String ingredientName);
 
-    @Query("SELECT a FROM Ingredient a WHERE UPPER(a.ingredientName) = UPPER(:ingredientName)")
-    List<Ingredient> findIngredientByIngredientNameContaining(String ingredientName);
-    Optional<Ingredient>findIngredientByIngredientNameContainingIgnoreCase(
-            @Param("ingredientName") String ingredientName);
+    List<Ingredient> findByIngredientNameStartingWith(String ingredientName);
+
 
 }
